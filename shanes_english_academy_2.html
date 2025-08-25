@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shane's English School - AI-Enhanced Online Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5a3d;
+            --accent-gold: #d4af37;
+            --light-green: #4a7c59;
+            --cream: #f5f3f0;
+            --dark-text: #1a1a1a;
+            --light-text: #666;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: var(--cream);
+        }
+
+        /* Celtic Pattern Background */
+        .celtic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%232d5a3d'%3E%3Ccircle cx='25' cy='25' r='2'/%3E%3Ccircle cx='75' cy='25' r='2'/%3E%3Ccircle cx='25' cy='75' r='2'/%3E%3Ccircle cx='75' cy='75' r='2'/%3E%3Cpath d='M25 25Q35 15 50 25T75 25M25 75Q35 85 50 75T75 75M25 25Q15 35 25 50T25 75M75 25Q85 35 75 50T75 75' stroke='%232d5a3d' fill='none' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-green);
+            border-radius: 25px;
+            padding: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-gold);
+            color: var(--primary-green);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-celtic {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-green);
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--primary-green);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-green), var(--accent-gold));
+        }
+
+        .section h2 {
+            color: var(--primary-green);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gold);
+        }
+
+        /* Home Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            color: var(--primary-green);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid var(--accent-gold);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature h3 {
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Classes Grid */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .class-card {
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(45, 90, 61, 0.3);
+        }
+
+        .class-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: var(--cream);
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--primary-green);
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--accent-gold);
+            color: var(--primary-green);
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            background: var(--white);
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* AI Chat Widget */
+        .ai-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chat-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-gold), #b8941f);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            transition: all 0.3s ease;
+        }
+
+        .chat-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-widget {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 300px;
+            height: 400px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+        }
+
+        .chat-widget.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .classes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-toggle {
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        /* Hidden class for sections */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="celtic-bg"></div>
+    
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-celtic">
+            <svg viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+                <circle cx="20" cy="60" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+                <circle cx="80" cy="60" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M35 25 Q50 40 65 25 M25 45 Q50 60 75 45" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+        <div class="logo" data-en="Shane's English School" data-es="Escuela de Inglés de Shane">Shane's English School</div>
+        <div class="tagline" data-en="AI-Enhanced Online Learning for Spanish Speakers" data-es="Aprendizaje Online Mejorado con IA para Hispanohablantes">AI-Enhanced Online Learning for Spanish Speakers</div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" data-en="Home" data-es="Inicio">Home</a></li>
+                <li><a href="#about" class="nav-link" data-en="About" data-es="Acerca de">About</a></li>
+                <li><a href="#classes" class="nav-link" data-en="Classes" data-es="Clases">Classes</a></li>
+                <li><a href="#contact" class="nav-link" data-en="Contact" data-es="Contacto">Contact</a></li>
+                <li><a href="#faq" class="nav-link" data-en="FAQ" data-es="FAQ">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="hero">
+                <h1 data-en="Master English with AI-Powered Learning" data-es="Domina el Inglés con Aprendizaje Potenciado por IA">Master English with AI-Powered Learning</h1>
+                <p data-en="25 years of experience teaching Spanish speakers, now enhanced with cutting-edge AI technology for personalized, effective learning." data-es="25 años de experiencia enseñando a hispanohablantes, ahora mejorada con tecnología de IA de vanguardia para un aprendizaje personalizado y efectivo.">25 years of experience teaching Spanish speakers, now enhanced with cutting-edge AI technology for personalized, effective learning.</p>
+                <a href="#contact" class="cta-button" data-en="Start Your Journey" data-es="Comienza Tu Viaje">Start Your Journey</a>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <h3 data-en="AI-Powered Personalization" data-es="Personalización con IA">AI-Powered Personalization</h3>
+                    <p data-en="Advanced AI adapts to your learning style, pace, and goals for maximum efficiency." data-es="IA avanzada se adapta a tu estilo de aprendizaje, ritmo y objetivos para máxima eficiencia.">Advanced AI adapts to your learning style, pace, and goals for maximum efficiency.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-en="25 Years Experience" data-es="25 Años de Experiencia">25 Years Experience</h3>
+                    <p data-en="Two and a half decades perfecting English teaching methods specifically for Spanish speakers." data-es="Dos décadas y media perfeccionando métodos de enseñanza de inglés específicamente para hispanohablantes.">Two and a half decades perfecting English teaching methods specifically for Spanish speakers.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-en="Interactive Online Classes" data-es="Clases Online Interactivas">Interactive Online Classes</h3>
+                    <p data-en="Engaging, dynamic sessions that keep you motivated and actively learning." data-es="Sesiones dinámicas y atractivas que te mantienen motivado y aprendiendo activamente.">Engaging, dynamic sessions that keep you motivated and actively learning.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section hidden">
+            <h2 data-en="About Shane's English School" data-es="Acerca de la Escuela de Inglés de Shane">About Shane's English School</h2>
+            <p data-en="With over 25 years of experience teaching English to Spanish speakers, including 21 years running my own academy, I understand exactly what challenges Spanish speakers face when learning English." data-es="Con más de 25 años de experiencia enseñando inglés a hispanohablantes, incluyendo 21 años dirigiendo mi propia academia, entiendo exactamente qué desafíos enfrentan los hispanohablantes al aprender inglés.">With over 25 years of experience teaching English to Spanish speakers, including 21 years running my own academy, I understand exactly what challenges Spanish speakers face when learning English.</p>
+            
+            <p data-en="Now, I'm combining this deep expertise with revolutionary AI technology to create learning experiences that are more personalized, effective, and engaging than ever before." data-es="Ahora, estoy combinando esta profunda experiencia con tecnología de IA revolucionaria para crear experiencias de aprendizaje más personalizadas, efectivas y atractivas que nunca.">Now, I'm combining this deep expertise with revolutionary AI technology to create learning experiences that are more personalized, effective, and engaging than ever before.</p>
+
+            <div class="features">
+                <div class="feature">
+                    <h3 data-en="Specialized Expertise" data-es="Experiencia Especializada">Specialized Expertise</h3>
+                    <p data-en="Focused exclusively on Spanish speakers' unique learning needs and common difficulties." data-es="Enfocado exclusivamente en las necesidades únicas de aprendizaje y dificultades comunes de los hispanohablantes.">Focused exclusively on Spanish speakers' unique learning needs and common difficulties.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-en="AI Integration" data-es="Integración de IA">AI Integration</h3>
+                    <p data-en="Cutting-edge AI creates personalized exercises, tracks progress, and adapts to your learning style." data-es="IA de vanguardia crea ejercicios personalizados, rastrea el progreso y se adapta a tu estilo de aprendizaje.">Cutting-edge AI creates personalized exercises, tracks progress, and adapts to your learning style.</p>
+                </div>
+                <div class="feature">
+                    <h3 data-en="Proven Results" data-es="Resultados Comprobados">Proven Results</h3>
+                    <p data-en="Thousands of successful students over two decades of teaching experience." data-es="Miles de estudiantes exitosos en dos décadas de experiencia docente.">Thousands of successful students over two decades of teaching experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Classes Section -->
+        <section id="classes" class="section hidden">
+            <h2 data-en="Our Classes" data-es="Nuestras Clases">Our Classes</h2>
+            <p data-en="Interactive online classes designed for Spanish teenagers and adults, with AI-enhanced learning experiences." data-es="Clases online interactivas diseñadas para adolescentes y adultos españoles, con experiencias de aprendizaje mejoradas por IA.">Interactive online classes designed for Spanish teenagers and adults, with AI-enhanced learning experiences.</p>
+
+            <div class="classes-grid">
+                <div class="class-card">
+                    <h3>B1 Level</h3>
+                    <p data-en="Intermediate English - Build confidence in everyday conversations and professional situations." data-es="Inglés Intermedio - Desarrolla confianza en conversaciones cotidianas y situaciones profesionales.">Intermediate English - Build confidence in everyday conversations and professional situations.</p>
+                </div>
+                <div class="class-card">
+                    <h3>B2 Level</h3>
+                    <p data-en="Upper-Intermediate - Master complex topics and express yourself fluently in most situations." data-es="Intermedio Superior - Domina temas complejos y exprésate con fluidez en la mayoría de situaciones.">Upper-Intermediate - Master complex topics and express yourself fluently in most situations.</p>
+                </div>
+                <div class="class-card">
+                    <h3>C1 Level</h3>
+                    <p data-en="Advanced - Achieve near-native fluency with sophisticated language skills." data-es="Avanzado - Alcanza fluidez casi nativa con habilidades lingüísticas sofisticadas.">Advanced - Achieve near-native fluency with sophisticated language skills.</p>
+                </div>
+            </div>
+
+            <div style="background: var(--cream); padding: 2rem; border-radius: 10px; margin-top: 2rem;">
+                <h3 data-en="Class Details" data-es="Detalles de las Clases">Class Details</h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li data-en="📅 <strong>Schedule:</strong> Tuesdays and Thursdays, 4:00 PM - 9:30 PM (GMT+1)" data-es="📅 <strong>Horario:</strong> Martes y Jueves, 16:00 - 21:30 (GMT+1)">📅 <strong>Schedule:</strong> Tuesdays and Thursdays, 4:00 PM - 9:30 PM (GMT+1)</li>
+                    <li data-en="⏰ <strong>Duration:</strong> 60 minutes per session" data-es="⏰ <strong>Duración:</strong> 60 minutos por sesión">⏰ <strong>Duration:</strong> 60 minutes per session</li>
+                    <li data-en="👥 <strong>Group Size:</strong> Maximum 12 students for personalized attention" data-es="👥 <strong>Tamaño del Grupo:</strong> Máximo 12 estudiantes para atención personalizada">👥 <strong>Group Size:</strong> Maximum 12 students for personalized attention</li>
+                    <li data-en="🎯 <strong>Focus:</strong> All aspects of English - speaking, listening, reading, writing, and grammar" data-es="🎯 <strong>Enfoque:</strong> Todos los aspectos del inglés - habla, escucha, lectura, escritura y gramática">🎯 <strong>Focus:</strong> All aspects of English - speaking, listening, reading, writing, and grammar</li>
+                    <li data-en="🤖 <strong>AI Enhancement:</strong> Personalized exercises created with advanced AI technology" data-es="🤖 <strong>Mejora con IA:</strong> Ejercicios personalizados creados con tecnología de IA avanzada">🤖 <strong>AI Enhancement:</strong> Personalized exercises created with advanced AI technology</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section hidden">
+            <h2 data-en="Contact Us" data-es="Contáctanos">Contact Us</h2>
+            <p data-en="Ready to transform your English learning experience? Get in touch today!" data-es="¿Listo para transformar tu experiencia de aprendizaje de inglés? ¡Ponte en contacto hoy!">Ready to transform your English learning experience? Get in touch today!</p>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" data-en="Name" data-es="Nombre">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-en="Email" data-es="Correo Electrónico">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="level" data-en="English Level" data-es="Nivel de Inglés">English Level</label>
+                        <select id="level" name="level" required>
+                            <option value="" data-en="Select your level" data-es="Selecciona tu nivel">Select your level</option>
+                            <option value="B1">B1 - Intermediate</option>
+                            <option value="B2">B2 - Upper Intermediate</option>
+                            <option value="C1">C1 - Advanced</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-en="Message" data-es="Mensaje">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your English learning goals..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
+                </form>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <p><strong data-en="Email:" data-es="Correo:">Email:</strong> shane@shanesenglishschool.com</p>
+                <p><strong data-en="WhatsApp:" data-es="WhatsApp:">WhatsApp:</strong> <span data-en="Available on request" data-es="Disponible bajo petición">Available on request</span></p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section hidden">
+            <h2 data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" data-en="How does the AI technology enhance learning?" data-es="¿Cómo mejora el aprendizaje la tecnología de IA?">How does the AI technology enhance learning?</div>
+                <div class="faq-answer">
+                    <p data-en="Our AI technology creates personalized exercises tailored to your specific learning needs, tracks your progress in real-time, and adapts the difficulty and focus areas based on your performance. This ensures you're always challenged at the right level and working on areas that need the most improvement." data-es="Nuestra tecnología de IA crea ejercicios personalizados adaptados a tus necesidades específicas de aprendizaje, rastrea tu progreso en tiempo real y adapta la dificultad y áreas de enfoque basándose en tu rendimiento. Esto asegura que siempre tengas el nivel adecuado de desafío y trabajes en las áreas que más necesitan mejorar.">Our AI technology creates personalized exercises tailored to your specific learning needs, tracks your progress in real-time, and adapts the difficulty and focus areas based on your performance. This ensures you're always challenged at the right level and working on areas that need the most improvement.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" data-en="What makes your teaching method special for Spanish speakers?" data-es="¿Qué hace especial tu método de enseñanza para hispanohablantes?">What makes your teaching method special for Spanish speakers?</div>
+                <div class="faq-answer">
+                    <p data-en="After 25 years of teaching Spanish speakers, I understand exactly where you struggle - pronunciation patterns, grammar structures that don't exist in Spanish, and cultural communication differences. My methods specifically address these challenges with targeted exercises and explanations." data-es="Después de 25 años enseñando a hispanohablantes, entiendo exactamente dónde tienes dificultades - patrones de pronunciación, estructuras gramaticales que no existen en español, y diferencias culturales de comunicación. Mis métodos abordan específicamente estos desafíos con ejercicios dirigidos y explicaciones.">After 25 years of teaching Spanish speakers, I understand exactly where you struggle - pronunciation patterns, grammar structures that don't exist in Spanish, and cultural communication differences. My methods specifically address these challenges with targeted exercises and explanations.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" data-en="How do the online classes work?" data-es="¿Cómo funcionan las clases online?
