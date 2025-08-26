@@ -78,27 +78,29 @@
             overflow: hidden;
         }
 
-        .header-celtic {
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            opacity: 0.1;
-            transform: rotate(15deg);
+        .header-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
         }
 
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .main-logo {
+            max-height: 180px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .main-logo:hover {
+            transform: scale(1.05);
         }
 
         .tagline {
             font-size: 1.2rem;
             opacity: 0.9;
             margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         /* Navigation */
@@ -464,15 +466,9 @@
 
     <!-- Header -->
     <header>
-        <div class="header-celtic">
-            <svg viewBox="0 0 100 100" fill="currentColor">
-                <circle cx="50" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
-                <circle cx="20" cy="60" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
-                <circle cx="80" cy="60" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
-                <path d="M35 25 Q50 40 65 25 M25 45 Q50 60 75 45" stroke="currentColor" stroke-width="2" fill="none"/>
-            </svg>
+        <div class="header-logo">
+            <img src="logo.png" alt="Shane's English School Logo" class="main-logo">
         </div>
-        <div class="logo" data-en="Shane's English School" data-es="Escuela de Inglés de Shane">Shane's English School</div>
         <div class="tagline" data-en="AI-Enhanced Online Learning for Spanish Speakers" data-es="Aprendizaje Online Mejorado con IA para Hispanohablantes">AI-Enhanced Online Learning for Spanish Speakers</div>
     </header>
 
