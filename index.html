@@ -1,4 +1,11 @@
- <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shane's English School - AI-Enhanced Online Learning</title>
+    <link rel="icon" type="image/png" href="NEW LOGO - SQUARE - PNG.png">
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -294,16 +301,6 @@
             color: var(--accent-gold);
         }
 
-        .class-card p {
-            margin-bottom: 1rem;
-        }
-
-        .class-card .schedule {
-            font-weight: bold;
-            margin-top: auto;
-            font-size: 0.9rem;
-        }
-
         .class-details-box {
             background: var(--cream);
             padding: 2rem;
@@ -318,6 +315,10 @@
         
         .class-details-list li {
             padding: 0.5rem 0;
+        }
+        
+        .class-details-list .level-schedule {
+            font-weight: bold;
         }
 
         /* Contact Form */
@@ -550,36 +551,27 @@
 
             <div class="classes-grid">
                 <div class="class-card">
-                    <div>
-                        <h3>B1 Level</h3>
-                        <p data-en="Intermediate English - Build confidence in everyday conversations and professional situations." data-es="Inglés Intermedio - Desarrolla confianza en conversaciones cotidianas y situaciones profesionales.">Intermediate English - Build confidence in everyday conversations and professional situations.</p>
-                    </div>
-                    <p class="schedule" data-en="Schedule: Tue & Thu, 4:00-5:00 PM and 5:15-6:15 PM" data-es="Horario: Mar & Jue, 16:00-17:00 y 17:15-18:15">Schedule: Tue & Thu, 4:00-5:00 PM and 5:15-6:15 PM</p>
+                    <h3>B1 Level</h3>
+                    <p data-en="Intermediate English - Build confidence in everyday conversations and professional situations." data-es="Inglés Intermedio - Desarrolla confianza en conversaciones cotidianas y situaciones profesionales.">Intermediate English - Build confidence in everyday conversations and professional situations.</p>
                 </div>
                 <div class="class-card">
-                    <div>
-                        <h3>B2 Level</h3>
-                        <p data-en="Upper-Intermediate - Master complex topics and express yourself fluently in most situations." data-es="Intermedio Superior - Domina temas complejos y exprésate con fluidez en la mayoría de situaciones.">Upper-Intermediate - Master complex topics and express yourself fluently in most situations.</p>
-                    </div>
-                    <p class="schedule" data-en="Schedule: Tue & Thu, 6:30-7:30 PM" data-es="Horario: Mar & Jue, 18:30-19:30">Schedule: Tue & Thu, 6:30-7:30 PM</p>
+                    <h3>B2 Level</h3>
+                    <p data-en="Upper-Intermediate - Master complex topics and express yourself fluently in most situations." data-es="Intermedio Superior - Domina temas complejos y exprésate con fluidez en la mayoría de situaciones.">Upper-Intermediate - Master complex topics and express yourself fluently in most situations.</p>
                 </div>
                 <div class="class-card">
-                    <div>
-                        <h3>C1 Level</h3>
-                        <p data-en="Advanced - Achieve near-native fluency with sophisticated language skills." data-es="Avanzado - Alcanza fluidez casi nativa con habilidades lingüísticas sofisticadas.">Advanced - Achieve near-native fluency with sophisticated language skills.</p>
-                    </div>
-                    <p class="schedule" data-en="Schedule: Tue & Thu, 8:00-9:00 PM" data-es="Horario: Mar & Jue, 20:00-21:00">Schedule: Tue & Thu, 8:00-9:00 PM</p>
+                    <h3>C1 Level</h3>
+                    <p data-en="Advanced - Achieve near-native fluency with sophisticated language skills." data-es="Avanzado - Alcanza fluidez casi nativa con habilidades lingüísticas sofisticadas.">Advanced - Achieve near-native fluency with sophisticated language skills.</p>
                 </div>
             </div>
 
             <div class="class-details-box">
                 <h3 data-en="Class Details" data-es="Detalles de las Clases">Class Details</h3>
                 <ul class="class-details-list">
-                    <li data-en="📅 <strong>Schedule:</strong> Tuesdays and Thursdays, 4:00 PM - 9:30 PM (GMT+1)" data-es="📅 <strong>Horario:</strong> Martes y Jueves, 16:00 - 21:30 (GMT+1)">📅 <strong>Schedule:</strong> Tuesdays and Thursdays, 4:00 PM - 9:30 PM (GMT+1)</li>
-                    <li data-en="⏰ <strong>Duration:</strong> 60 minutes per session" data-es="⏰ <strong>Duración:</strong> 60 minutos por sesión">⏰ <strong>Duration:</strong> 60 minutes per session</li>
                     <li data-en="👥 <strong>Group Size:</strong> Maximum 12 students for personalized attention" data-es="👥 <strong>Tamaño del Grupo:</strong> Máximo 12 estudiantes para atención personalizada">👥 <strong>Group Size:</strong> Maximum 12 students for personalized attention</li>
-                    <li data-en="🎯 <strong>Focus:</strong> All aspects of English - speaking, listening, reading, writing, and grammar" data-es="🎯 <strong>Enfoque:</strong> Todos los aspectos del inglés - habla, escucha, lectura, escritura y gramática">🎯 <strong>Focus:</strong> All aspects of English - speaking, listening, reading, writing, and grammar</li>
-                    <li data-en="🤖 <strong>AI Enhancement:</strong> Personalized exercises created with advanced AI technology" data-es="🤖 <strong>Mejora con IA:</strong> Ejercicios personalizados creados con tecnología de IA avanzada">🤖 <strong>AI Enhancement:</strong> Personalized exercises created with advanced AI technology</li>
+                    <li data-en="⏰ <strong>Duration:</strong> 60 minutes per session" data-es="⏰ <strong>Duración:</strong> 60 minutos por sesión">⏰ <strong>Duration:</strong> 60 minutes per session</li>
+                    <li class="level-schedule" data-en="<strong>B1 Schedule:</strong> Tuesdays & Thursdays, 4:00-5:00 PM and 5:15-6:15 PM" data-es="<strong>Horario B1:</strong> Martes y Jueves, 16:00-17:00 y 17:15-18:15"><strong>B1 Schedule:</strong> Tuesdays & Thursdays, 4:00-5:00 PM and 5:15-6:15 PM</li>
+                    <li class="level-schedule" data-en="<strong>B2 Schedule:</strong> Tuesdays & Thursdays, 6:30-7:30 PM" data-es="<strong>Horario B2:</strong> Martes y Jueves, 18:30-19:30"><strong>B2 Schedule:</strong> Tuesdays & Thursdays, 6:30-7:30 PM</li>
+                    <li class="level-schedule" data-en="<strong>C1 Schedule:</strong> Tuesdays & Thursdays, 8:00-9:00 PM" data-es="<strong>Horario C1:</strong> Martes y Jueves, 20:00-21:00"><strong>C1 Schedule:</strong> Tuesdays & Thursdays, 8:00-9:00 PM</li>
                 </ul>
             </div>
         </section>
