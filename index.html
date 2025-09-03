@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shane's English School - AI-Enhanced Online Learning</title>
-    <link rel="icon" type="image/png" href="NEW LOGO - SQUARE - PNG.png">
-    <style>
+ <style>
         * {
             margin: 0;
             padding: 0;
@@ -285,6 +278,9 @@
             border-radius: 15px;
             text-align: center;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .class-card:hover {
@@ -296,6 +292,16 @@
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--accent-gold);
+        }
+
+        .class-card p {
+            margin-bottom: 1rem;
+        }
+
+        .class-card .schedule {
+            font-weight: bold;
+            margin-top: auto;
+            font-size: 0.9rem;
         }
 
         .class-details-box {
@@ -544,16 +550,25 @@
 
             <div class="classes-grid">
                 <div class="class-card">
-                    <h3>B1 Level</h3>
-                    <p data-en="Intermediate English - Build confidence in everyday conversations and professional situations." data-es="Inglés Intermedio - Desarrolla confianza en conversaciones cotidianas y situaciones profesionales.">Intermediate English - Build confidence in everyday conversations and professional situations.</p>
+                    <div>
+                        <h3>B1 Level</h3>
+                        <p data-en="Intermediate English - Build confidence in everyday conversations and professional situations." data-es="Inglés Intermedio - Desarrolla confianza en conversaciones cotidianas y situaciones profesionales.">Intermediate English - Build confidence in everyday conversations and professional situations.</p>
+                    </div>
+                    <p class="schedule" data-en="Schedule: Tue & Thu, 4:00-5:00 PM and 5:15-6:15 PM" data-es="Horario: Mar & Jue, 16:00-17:00 y 17:15-18:15">Schedule: Tue & Thu, 4:00-5:00 PM and 5:15-6:15 PM</p>
                 </div>
                 <div class="class-card">
-                    <h3>B2 Level</h3>
-                    <p data-en="Upper-Intermediate - Master complex topics and express yourself fluently in most situations." data-es="Intermedio Superior - Domina temas complejos y exprésate con fluidez en la mayoría de situaciones.">Upper-Intermediate - Master complex topics and express yourself fluently in most situations.</p>
+                    <div>
+                        <h3>B2 Level</h3>
+                        <p data-en="Upper-Intermediate - Master complex topics and express yourself fluently in most situations." data-es="Intermedio Superior - Domina temas complejos y exprésate con fluidez en la mayoría de situaciones.">Upper-Intermediate - Master complex topics and express yourself fluently in most situations.</p>
+                    </div>
+                    <p class="schedule" data-en="Schedule: Tue & Thu, 6:30-7:30 PM" data-es="Horario: Mar & Jue, 18:30-19:30">Schedule: Tue & Thu, 6:30-7:30 PM</p>
                 </div>
                 <div class="class-card">
-                    <h3>C1 Level</h3>
-                    <p data-en="Advanced - Achieve near-native fluency with sophisticated language skills." data-es="Avanzado - Alcanza fluidez casi nativa con habilidades lingüísticas sofisticadas.">Advanced - Achieve near-native fluency with sophisticated language skills.</p>
+                    <div>
+                        <h3>C1 Level</h3>
+                        <p data-en="Advanced - Achieve near-native fluency with sophisticated language skills." data-es="Avanzado - Alcanza fluidez casi nativa con habilidades lingüísticas sofisticadas.">Advanced - Achieve near-native fluency with sophisticated language skills.</p>
+                    </div>
+                    <p class="schedule" data-en="Schedule: Tue & Thu, 8:00-9:00 PM" data-es="Horario: Mar & Jue, 20:00-21:00">Schedule: Tue & Thu, 8:00-9:00 PM</p>
                 </div>
             </div>
 
@@ -776,7 +791,9 @@
             });
             
             // The chat button is now also a nav-link, so it's covered by the listener above
-            // No separate listener needed
+            if(chatLink) {
+                chatLink.addEventListener('click', handleNavClick);
+            }
 
             if (contactForm) {
                 contactForm.action = 'https://formspree.io/f/mandnejp';
@@ -794,3 +811,16 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+Tools
+
