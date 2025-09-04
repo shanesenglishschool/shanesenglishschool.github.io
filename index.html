@@ -305,17 +305,23 @@
             font-size: 1.1rem;
             margin-bottom: 1rem;
             font-weight: normal;
-            opacity: 1; /* Changed from 0.9 */
+            opacity: 0.9;
         }
 
         .class-card .schedule {
             font-weight: bold;
-            margin-top: auto;
             font-size: 1rem;
-            color: var(--white); /* Changed from --accent-gold */
+            color: var(--white);
             background: rgba(0,0,0,0.2);
             padding: 0.5rem;
             border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .class-card .price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
         }
 
         .class-details-box {
@@ -332,12 +338,6 @@
         
         .class-details-list li {
             padding: 0.5rem 0;
-        }
-        
-        .timetable {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--primary-green);
         }
 
         /* Contact Form */
@@ -573,42 +573,57 @@
                         <h3 data-en="B1 - 1st Year" data-es="B1 - 1er año">B1 - 1st Year</h3>
                         <h4 data-en="Intermediate" data-es="Intermedio">Intermediate</h4>
                     </div>
-                    <p class="schedule" data-en="Tuesdays & Thursdays, 4:15 PM - 5:15 PM" data-es="martes y jueves - 16:15 a 17:15">Tuesdays & Thursdays, 4:15 PM - 5:15 PM</p>
+                    <div>
+                        <p class="schedule" data-en="Tuesdays & Thursdays, 4:15 PM - 5:15 PM" data-es="martes y jueves - 16:15 a 17:15">Tuesdays & Thursdays, 4:15 PM - 5:15 PM</p>
+                        <p class="price" data-en="€50 / month" data-es="50€ / mes">€50 / month</p>
+                    </div>
                 </div>
                 <div class="class-card">
                     <div>
                         <h3 data-en="B1 - 2nd Year" data-es="B1 - 2º año">B1 - 2nd Year</h3>
                         <h4 data-en="Intermediate" data-es="Intermedio">Intermediate</h4>
                     </div>
-                    <p class="schedule" data-en="Tuesdays & Thursdays, 5:15 PM - 6:15 PM" data-es="martes y jueves - 17:15 a 18:15">Tuesdays & Thursdays, 5:15 PM - 6:15 PM</p>
+                    <div>
+                        <p class="schedule" data-en="Tuesdays & Thursdays, 5:15 PM - 6:15 PM" data-es="martes y jueves - 17:15 a 18:15">Tuesdays & Thursdays, 5:15 PM - 6:15 PM</p>
+                        <p class="price" data-en="€50 / month" data-es="50€ / mes">€50 / month</p>
+                    </div>
                 </div>
                 <div class="class-card">
                     <div>
                         <h3 data-en="B1 - Exam Prep (25/26)" data-es="B1 - Convocatorias curso 25 / 26">B1 - Exam Prep (25/26)</h3>
                         <h4 data-en="Exam Preparation" data-es="Preparación de Examen">Exam Preparation</h4>
                     </div>
-                    <p class="schedule" data-en="Tuesdays & Thursdays, 6:30 PM - 7:30 PM" data-es="martes y jueves - 18:30 a 19:30">Tuesdays & Thursdays, 6:30 PM - 7:30 PM</p>
+                    <div>
+                        <p class="schedule" data-en="Tuesdays & Thursdays, 6:30 PM - 7:30 PM" data-es="martes y jueves - 18:30 a 19:30">Tuesdays & Thursdays, 6:30 PM - 7:30 PM</p>
+                        <p class="price" data-en="€50 / month" data-es="50€ / mes">€50 / month</p>
+                    </div>
                 </div>
                 <div class="class-card">
                     <div>
                         <h3 data-en="B2 - 2nd Year" data-es="B2 - 2º año">B2 - 2nd Year</h3>
                         <h4 data-en="Upper-Intermediate" data-es="Intermedio-Superior">Upper-Intermediate</h4>
                     </div>
-                    <p class="schedule" data-en="Tuesdays & Thursdays, 7:30 PM - 8:30 PM" data-es="martes y jueves - 19:30 a 20:30">Tuesdays & Thursdays, 7:30 PM - 8:30 PM</p>
+                    <div>
+                        <p class="schedule" data-en="Tuesdays & Thursdays, 7:30 PM - 8:30 PM" data-es="martes y jueves - 19:30 a 20:30">Tuesdays & Thursdays, 7:30 PM - 8:30 PM</p>
+                        <p class="price" data-en="€55 / month" data-es="55€ / mes">€55 / month</p>
+                    </div>
                 </div>
                 <div class="class-card">
                     <div>
                         <h3 data-en="C1 - Exam Prep (25/26)" data-es="C1 - Convocatorias curso 25 / 26">C1 - Exam Prep (25/26)</h3>
                         <h4 data-en="Advanced Exam Preparation" data-es="Preparación de Examen Avanzado">Advanced Exam Preparation</h4>
                     </div>
-                    <p class="schedule" data-en="Tuesdays & Thursdays, 8:30 PM - 9:30 PM" data-es="martes y jueves - 20:30 a 21:30">Tuesdays & Thursdays, 8:30 PM - 9:30 PM</p>
+                    <div>
+                        <p class="schedule" data-en="Tuesdays & Thursdays, 8:30 PM - 9:30 PM" data-es="martes y jueves - 20:30 a 21:30">Tuesdays & Thursdays, 8:30 PM - 9:30 PM</p>
+                        <p class="price" data-en="€60 / month" data-es="60€ / mes">€60 / month</p>
+                    </div>
                 </div>
             </div>
 
             <div class="class-details-box">
                 <h3 data-en="General Class Details" data-es="Detalles Generales de las Clases">General Class Details</h3>
                 <ul class="class-details-list">
-                    <li data-en="✅ <strong>All classes</strong> are on Tuesdays & Thursdays" data-es="✅ <strong>Todas las clases</strong> son los Martes y Jueves">✅ <strong>All classes</strong> are on Tuesdays & Thursdays</li>
+                    <li data-en="💰 <strong>Enrollment Fee:</strong> €25 (from October 2025)" data-es="💰 <strong>Matrícula:</strong> 25€ (a partir de octubre 2025)">💰 <strong>Enrollment Fee:</strong> €25 (from October 2025)</li>
                     <li data-en="⏰ <strong>Duration:</strong> 60 minutes per session" data-es="⏰ <strong>Duración:</strong> 60 minutos por sesión">⏰ <strong>Duration:</strong> 60 minutes per session</li>
                     <li data-en="👥 <strong>Group Size:</strong> Maximum 12 students for personalized attention" data-es="👥 <strong>Tamaño del Grupo:</strong> Máximo 12 estudiantes para atención personalizada">👥 <strong>Group Size:</strong> Maximum 12 students for personalized attention</li>
                     <li data-en="🎯 <strong>Focus:</strong> All aspects of English - speaking, listening, reading, writing, and grammar" data-es="🎯 <strong>Enfoque:</strong> Todos los aspectos del inglés - habla, escucha, lectura, escritura y gramática">🎯 <strong>Focus:</strong> All aspects of English - speaking, listening, reading, writing, and grammar</li>
