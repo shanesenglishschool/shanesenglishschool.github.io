@@ -948,8 +948,10 @@
                             el.placeholder = text;
                         } else if (el.tagName === 'OPTION' && el.value === "") {
                             el.textContent = text;
-                        }
-                        else {
+                        } else if (el.tagName === 'IMG' && el.hasAttribute(`data-${lang}`)) {
+                            // Update image title attribute for logo tooltip
+                            el.title = text;
+                        } else {
                            el.innerHTML = text;
                         }
                     }
