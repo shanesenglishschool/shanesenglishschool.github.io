@@ -20,6 +20,8 @@
             --dark-text: #1a1a1a;
             --light-text: #666;
             --white: #ffffff;
+            --success-green: #28a745;
+            --error-red: #dc3545;
         }
 
         html {
@@ -43,6 +45,18 @@
             opacity: 0.03;
             z-index: -1;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='%232d5a3d'%3E%3Ccircle cx='25' cy='25' r='2'/%3E%3Ccircle cx='75' cy='25' r='2'/%3E%3Ccircle cx='25' cy='75' r='2'/%3E%3Ccircle cx='75' cy='75' r='2'/%3E%3Cpath d='M25 25Q35 15 50 25T75 25M25 75Q35 85 50 75T75 75M25 25Q15 35 25 50T25 75M75 25Q85 35 75 50T75 75' stroke='%232d5a3d' fill='none' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-green));
+            z-index: 1001;
+            transition: width 0.1s ease;
         }
 
         /* Language Toggle */
@@ -96,6 +110,7 @@
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
             transition: transform 0.3s ease;
             margin-top: 1rem;
+            animation: fadeInUp 1s ease-out;
         }
 
         .main-logo:hover {
@@ -107,6 +122,28 @@
             opacity: 0.9;
             margin-bottom: 1rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
         }
 
         /* Navigation */
@@ -116,6 +153,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
         }
 
         .nav-container {
@@ -147,6 +185,7 @@
             background: var(--primary-green);
             color: var(--white);
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
         }
 
         /* Main Content */
@@ -164,6 +203,14 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            transform: translateY(0);
+            opacity: 1;
         }
         
         .section.hidden {
@@ -208,6 +255,10 @@
             font-size: 3rem;
             color: var(--primary-green);
             margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
@@ -229,6 +280,23 @@
             text-decoration: none;
             display: inline-block;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
@@ -240,6 +308,23 @@
             text-align: center;
             margin-top: 1rem;
             font-weight: bold;
+            padding: 0.5rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        #form-status.success {
+            color: var(--success-green);
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        #form-status.error {
+            color: var(--error-red);
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            display: block;
         }
 
         /* Features Grid */
@@ -257,6 +342,24 @@
             text-align: center;
             border-left: 4px solid var(--accent-gold);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover::before {
+            transform: scale(1);
         }
 
         .feature:hover {
@@ -268,6 +371,13 @@
             color: var(--primary-green);
             font-size: 1.3rem;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature p {
+            position: relative;
+            z-index: 1;
         }
 
         /* Classes Grid */
@@ -288,10 +398,27 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .class-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .class-card:hover::before {
+            left: 100%;
         }
 
         .class-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 10px 25px rgba(45, 90, 61, 0.3);
         }
 
@@ -322,6 +449,7 @@
             font-weight: bold;
             font-size: 1.2rem;
             color: var(--accent-gold);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .class-details-box {
@@ -329,6 +457,7 @@
             padding: 2rem;
             border-radius: 10px;
             margin-top: 2rem;
+            border: 1px solid rgba(45, 90, 61, 0.1);
         }
         
         .class-details-list {
@@ -338,6 +467,11 @@
         
         .class-details-list li {
             padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .class-details-list li:hover {
+            color: var(--primary-green);
         }
 
         /* Contact Form */
@@ -346,6 +480,7 @@
             padding: 2rem;
             border-radius: 10px;
             margin: 2rem 0;
+            border: 1px solid rgba(45, 90, 61, 0.1);
         }
 
         .form-group {
@@ -367,7 +502,7 @@
             border: 2px solid #ddd;
             border-radius: 8px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
@@ -375,11 +510,21 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
         }
         
         .contact-info {
             text-align: center;
             margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--white);
+            border-radius: 10px;
+        }
+
+        .contact-info strong {
+            color: var(--accent-gold);
         }
 
         /* FAQ Section */
@@ -388,6 +533,12 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .faq-question {
@@ -396,7 +547,7 @@
             cursor: pointer;
             font-weight: bold;
             color: var(--primary-green);
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
             display: flex;
             justify-content: space-between;
@@ -408,6 +559,7 @@
             font-size: 2rem;
             line-height: 1;
             transition: transform 0.3s ease;
+            color: var(--accent-gold);
         }
 
         .faq-question.active::after {
@@ -416,6 +568,7 @@
 
         .faq-question:hover {
             background: #e9e5e0;
+            padding-left: 1.5rem;
         }
 
         .faq-answer {
@@ -457,6 +610,22 @@
 
         .chat-toggle:hover {
             transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(45, 90, 61, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-green);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Mobile Responsive */
@@ -484,15 +653,37 @@
             .section {
                 padding: 2rem;
             }
+            .main-logo {
+                max-height: 180px;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for accessibility */
+        .nav-links a:focus,
+        .lang-btn:focus,
+        .cta-button:focus,
+        .chat-toggle:focus {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
+    <div class="scroll-progress"></div>
     <div class="celtic-bg"></div>
     
     <div class="language-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn active" data-lang="en" aria-label="Switch to English">EN</button>
+        <button class="lang-btn" data-lang="es" aria-label="Cambiar a Español">ES</button>
     </div>
 
     <header>
@@ -518,11 +709,11 @@
     </nav>
 
     <main>
-        <section id="home" class="section">
+        <section id="home" class="section visible">
             <div class="hero">
                 <h1 data-en="Master English with AI-Powered Learning" data-es="Domina el Inglés con Aprendizaje Potenciado por IA">Master English with AI-Powered Learning</h1>
                 <p data-en="25 years of experience teaching Spanish speakers, now enhanced with cutting-edge AI technology for personalized, effective learning." data-es="25 años de experiencia enseñando a hispanohablantes, ahora mejorada con tecnología de IA de vanguardia para un aprendizaje personalizado y efectivo.">25 years of experience teaching Spanish speakers, now enhanced with cutting-edge AI technology for personalized, effective learning.</p>
-                <a href="#contact" class="cta-button nav-link" data-en="Start Your Journey" data-es="Comienza Tu Viaje">Start Your Journey</a>
+                <a href="#contact" class="cta-button nav-link pulse-animation" data-en="Start Your Journey" data-es="Comienza Tu Viaje">Start Your Journey</a>
             </div>
 
             <div class="features">
@@ -725,8 +916,28 @@
             const faqQuestions = document.querySelectorAll('.faq-question');
             const chatLink = document.querySelector('.ai-chat');
             const contactForm = document.getElementById('contactForm');
+            const scrollProgress = document.querySelector('.scroll-progress');
             
             // --- FUNCTIONS ---
+
+            // Function to update scroll progress bar
+            function updateScrollProgress() {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                scrollProgress.style.width = scrollPercent + '%';
+            }
+
+            // Function to animate sections on scroll
+            function animateOnScroll() {
+                const sections = document.querySelectorAll('.section:not(.hidden)');
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
 
             // Function to change language
             function setLanguage(lang) {
@@ -758,13 +969,20 @@
                 if (targetSection) {
                     sections.forEach(section => {
                         section.classList.add('hidden');
+                        section.classList.remove('visible');
                     });
                     targetSection.classList.remove('hidden');
+                    
+                    // Trigger animation after a short delay
+                    setTimeout(() => {
+                        targetSection.classList.add('visible');
+                    }, 50);
 
                     navLinks.forEach(link => {
                         link.classList.toggle('active', link.getAttribute('href') === `#${targetId}`);
                     });
-                    // Scroll to the top of the main content area, not the whole window
+                    
+                    // Scroll to the top of the main content area
                     document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
                 }
             }
@@ -788,12 +1006,18 @@
                 }
             }
             
-            // Function to handle Formspree submission
+            // Enhanced form submission with better feedback
             async function handleFormSubmit(event) {
                 event.preventDefault();
                 const form = event.target;
                 const data = new FormData(form);
                 const status = document.getElementById('form-status');
+                const submitButton = form.querySelector('button[type="submit"]');
+                
+                // Show loading state
+                submitButton.innerHTML = '<span class="loading"></span> Sending...';
+                submitButton.disabled = true;
+                status.style.display = 'none';
                 
                 try {
                     const response = await fetch(form.action, {
@@ -806,7 +1030,8 @@
 
                     if (response.ok) {
                         status.textContent = "Thank you for your message! We will be in touch shortly.";
-                        status.style.color = "var(--primary-green)";
+                        status.className = 'success';
+                        status.style.display = 'block';
                         form.reset();
                     } else {
                         const responseData = await response.json();
@@ -815,11 +1040,17 @@
                         } else {
                             status.textContent = "Oops! There was a problem submitting your form.";
                         }
-                         status.style.color = "red";
+                        status.className = 'error';
+                        status.style.display = 'block';
                     }
                 } catch (error) {
                     status.textContent = "Oops! There was a problem submitting your form.";
-                    status.style.color = "red";
+                    status.className = 'error';
+                    status.style.display = 'block';
+                } finally {
+                    // Reset button
+                    submitButton.innerHTML = submitButton.getAttribute('data-en') || 'Send Message';
+                    submitButton.disabled = false;
                 }
             }
 
@@ -848,14 +1079,23 @@
                 contactForm.addEventListener("submit", handleFormSubmit);
             }
 
+            // Scroll events
+            window.addEventListener('scroll', () => {
+                updateScrollProgress();
+                animateOnScroll();
+            });
+
             // --- INITIALIZATION ---
             const preferredLanguage = localStorage.getItem('preferredLanguage');
             if (preferredLanguage) {
                 setLanguage(preferredLanguage);
             }
 
+            // Initial animation check
+            animateOnScroll();
+
         });
     </script>
 
 </body>
-</html>
+</html> 
